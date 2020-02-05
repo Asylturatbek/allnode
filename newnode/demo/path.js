@@ -11,4 +11,9 @@ console.log('Parse: ', path.parse(__filename));
 console.log(path.join(__dirname, 'server', 'index.html'));
 
 
-//** commiting in master branch the same file of path.js
+<<<<<<< HEAD
+=======
+//**Lets see what happens when I commit this file 
+//with the branch of testing
+//okay
+>>>>>>> testing
