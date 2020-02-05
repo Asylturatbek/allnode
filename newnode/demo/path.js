@@ -9,3 +9,8 @@ console.log('rasshirenie: ', path.extname(__filename));
 console.log('Parse: ', path.parse(__filename));
 
 console.log(path.join(__dirname, 'server', 'index.html'));
+
+
+//**Lets see what happens when I commit this file 
+//with the branch of testing
+//okay
