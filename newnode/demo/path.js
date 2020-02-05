@@ -9,3 +9,6 @@ console.log('rasshirenie: ', path.extname(__filename));
 console.log('Parse: ', path.parse(__filename));
 
 console.log(path.join(__dirname, 'server', 'index.html'));
+
+
+//** commiting in master branch the same file of path.js
