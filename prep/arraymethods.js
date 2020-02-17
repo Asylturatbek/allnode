@@ -42,3 +42,13 @@ const igorIndex = people.findIndex(function(person) {
 	return person.name ==='Vladilen'
 })
 console.log(igorIndex)
+let arr = [1,2,3]
+let arr1 = [1,2,3]
+arr.forEach(function(item, index, array) {
+	return item+=1
+})
+arr1.map((item, index, array) {
+	
+})
+console.log(arr)
+console.log(arr1)
