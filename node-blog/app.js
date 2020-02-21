@@ -3,10 +3,13 @@ const express = require('express')
 const app = express();
 const URI = 'mongodb+srv://admin:asyl00000@cluster0-ple4h.mongodb.net/test?retryWrites=true&w=majority'
 
+const port = process.env.PORT || 5000
+
 const mongoose = require('mongoose')
 mongoose.connect(URI, { 
 	useUnifiedTopology: true ,
-	useNewUrlParser: true
+	useNewUrlParser: true,
+	useFindAndModify: false
 })
 mongoose.connection.on('connected', () => {
 	console.log('Mongoose is connected')
@@ -50,16 +53,37 @@ app.post('/addpost', (req, res) => {
     });
 });
 
-app.delete('/delete/:id', async (req, res) => {
-	try {
-		const removedPost = await Post.remove({_id: req.params.postId})
-		res.json(removedPost)
-	} catch (err) {
-		res.json({message: err})
-	}
+app.get('/delete', (req, res) => {
+	const query = req.query
+	Post.findByIdAndRemove(query.id)
+	.then( data => {
+		res.redirect('/')
+	})
+	.catch( err => {
+		res.json({
+			confirmation: 'failed',
+			message: 'something went wrong'
+		})
+	})
 })
 
-const port = process.env.Port || 5000
+app.get('/update', (req, res) => {
+	const query = req.query
+	const profileId = query.id
+	delete query['id']
+
+	Post.findByIdAndUpdate(profileId, query, {new:true})
+	.then(profile => {
+		res.redirect('/')
+	})
+	.catch(err => {
+		res.json({
+			confirmation: 'fail',
+			message: 'there is something wrong with updating'
+		})
+	})
+} )
+
 
 
 

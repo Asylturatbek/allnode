@@ -1,22 +1,69 @@
-<html>
-    <head></head>
-    <body>
-        <h1>Node Blog</h1>
-        
-        <% for(let i = 0; i < posts.length; i++) { %>
-            <article>
-            	<h3><%= posts[i].title %></h3>
-            	<p><%= posts[i].id %></p>
-                <p><%= posts[i].body %></p>
-                <p><%= posts[i].date %></p>
-                <button action="<%= posts[i].id %>" type="button">Delete this post</button>
-            </article>
-        <% } %>
-        <form action="addpost" method="POST">
-        	<input type="text" name="title"><br><br>
-        	<input type="text" name="date"><br><br>
-            <textarea name="body"></textarea><br><br>
-            <input type="submit" value="Add Post" />
-        </form>
-    </body>
+<!DOCTYPE html>
+<html lang="en-US">
+
+<body style="background-color: powderblue;" class="container">
+    <div class="row">
+
+        <div style="text-align:center;margin-bottom:48px">
+
+            <h1>Node Blog</h1>
+            <hr />
+            <div style="background:#f9f9f9;border:1px solid #ddd;border-radius:3px;padding:12px;background-color:#FAEBD7;display: inline-flex;">
+            <form action="delete">
+                <h4 style="color:#4B0082">Delete with the id</h4>
+                copy paste the id <br>
+                <input type="text" name="id">---<br>
+                <input type="submit" value="Delete">
+            </form>
+
+            <form action="update">
+                <h4 style="color:#4B0082">Update with the id</h4>
+                copy paste the id <br>
+                <input type="text" name="id">---<br>
+                write the new title<br>
+                <input type="text" name="title"><br>
+                write the new date<br>
+                <input type="text" name="date" placeholder="20.02.2020"><br>
+                write the new text<br>
+                <textarea name="body"></textarea><br><br>
+                <input type="submit" value="Update the post" />
+            </form>
+
+            <form action="addpost" method="POST">
+                <h4 style="color:#4B0082">Create new post</h4>
+                write title<br>
+                <input type="text" name="title"><br>
+                write date<br>
+                <input type="text" name="date" placeholder="20.02.2020"><br>
+                write text<br>
+                <textarea name="body"></textarea><br><br>
+                <input type="submit" value="Add Post" />
+            </form>
+            </div>
+            <hr />
+
+            <div class="row"">
+                <div class="col-md-6 col-md-offset-1">
+                    <div style="text-align:left;background:#f9f9f9;border:1px solid #ddd;border-radius:3px;padding:12px;background-color:#BDB76B">
+                        <ul style="padding-left:16px">
+                            
+                            <% for(let i = 0; i < posts.length; i++) { %>
+                                <li>
+                                    <article>
+                                    <h3><%= posts[i].title %></h3>
+                                    <p>Id is :    <%= posts[i].id %></p>
+                                    <p><%= posts[i].body %></p>
+                                    <p><%= posts[i].date %></p>
+                                    </article>
+                                </li>
+                            <% } %>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
 </html>
