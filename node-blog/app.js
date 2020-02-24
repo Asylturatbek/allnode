@@ -71,6 +71,18 @@ app.get('/update', (req, res) => {
 	const query = req.query
 	const profileId = query.id
 	delete query['id']
+	const dateIsNull = query.date == "";
+	const titleIsNull = query.title == ""
+	const bodyIsNull = query.body == "";
+	if(dateIsNull) {
+		delete query['date']
+	}
+	if(titleIsNull) {
+		delete query['title']
+	}
+	if(bodyIsNull) {
+		delete query['body']
+	}
 
 	Post.findByIdAndUpdate(profileId, query, {new:true})
 	.then(profile => {
