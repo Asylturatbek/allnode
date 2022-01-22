@@ -13,7 +13,7 @@
   "dependencies": {
     "asyn": "0.0.1",
     "lodash": "^4.17.15",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^3.1.1"
   },
   "devDependencies": {
     "live-server": "^1.2.1"
